@@ -38,7 +38,6 @@ print dd.index
 
 
 # 层次化索引
-
 lefth = DataFrame({
     'key1': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada'],
     'key2': [2000, 2001, 2002, 2001, 2002],
@@ -52,4 +51,29 @@ righth = DataFrame(
 
 print righth
 print pd.merge(lefth, righth, left_on=['key1', 'key2'], right_index=True)
+# 轴向连接
+arr = np.arange(12).reshape((3, 4))
+print arr
+print np.concatenate([arr, arr], axis=1)
+s1 = Series([0, 1], index=['a', 'b'])
+s2 = Series([2, 3, 4], index=['c', 'd', 'e'])
+s3 = Series([5, 6], index=['f', 'g'])
+s4 = pd.concat([s1 * 5, s3])
+
+print pd.concat([s1, s2, s3])
+print pd.concat([s1, s2, s3], axis=1)
 print pd.concat([lefth, righth])
+
+print pd.isnull(pd.concat([lefth, righth]))
+a = pd.concat([lefth, righth])
+a[a is None] = 0
+print a.replace(np.nan, 0)
+print s4
+# TODO 未完成
+# 离散化和面元划分
+ages = [20, 22, 25, 27, 21, 23, 37, 31, 61, 45, 41, 32]
+bins = [18, 25, 35, 60, 100]
+cats = pd.cut(ages, bins)
+print cats
+print cats.codes
+print pd.value_counts(cats)
