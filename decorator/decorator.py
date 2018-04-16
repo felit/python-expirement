@@ -11,6 +11,7 @@ def w1(func=None,hello="world"):
     print("添加装饰器:%s%s"%(func,hello))
     def inner(*args,**kwargs):
         print "from w1"
+        var = 900
         return func(*args,**kwargs)
     return inner
 
@@ -27,6 +28,7 @@ def f1():
 # @w1(hello="hello")
 def f2():
     print("f2")
+    # print var
 
 
 def f3():
