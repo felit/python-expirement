@@ -1,4 +1,7 @@
 python-study
 ============
 
-study pythoon
+study python
+
+
+- py3: python -m pip  install opencv-python
